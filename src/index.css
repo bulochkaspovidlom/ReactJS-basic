@@ -37,6 +37,10 @@ code {
   align-items: start;
 }
 
+.margin8 {
+  margin: 8px;
+}
+
 .actions {
   width: 20%;
 }
@@ -52,8 +56,4 @@ code {
 
 .messageList ul {
   padding: 0;
-}
-
-.message {
-  
 }
