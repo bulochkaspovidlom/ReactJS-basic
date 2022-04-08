@@ -3,11 +3,12 @@ import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
 
 import MessageList from "./components/MessageList"
 import { AUTHOR } from './constants/main';
 
-function App() {
+const App = () => {
   const [messageList, setMessageList] = useState([]);
   const [message, setMessage] = useState('');
 
@@ -36,23 +37,34 @@ function App() {
     }
   }, [messageList]);
 
+
   return (
     <div className="App flex">
-      <Box
-      component="form"
-      sx={{
-        '& > :not(style)': { m: 1 },
-      }}
-    >
-      <div>
-        <TextField className='margin8' id="outlined-basic" label="Enter text" variant="outlined" value={message} onChange={handleInput} />
-      </div>
-      <div>
-        <Button className='margin8' variant="outlined" onClick={handleButton}>Add to list</Button>
-      </div>
-    </Box>
+      <Container maxWidth="lg">
+        <Box
+            component="form"
+            sx={{
+              '& > :not(style)': { m: 1 }
+            }}
+          >
+          <div>
+            <TextField 
+            sx={{
+              width: 300,
+            }}
+            autoFocus className='margin8' id="outlined-basic" label="Enter text" variant="outlined" value={message} onChange={handleInput} />
+          </div>
+          <div>
+            <Button sx={{
+              width: 150,
+            }} className='margin8' variant="outlined" onClick={handleButton}>Add to list</Button>
+          </div>
+        </Box>
+      </Container>
 
-      <MessageList messages={messageList} />
+      <Container maxWidth="lg">
+        <MessageList messages={messageList} />
+      </Container>
     </div>
   );
 }
