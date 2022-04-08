@@ -1,4 +1,9 @@
 import React, { useEffect, useState } from 'react';
+
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+
 import MessageList from "./components/MessageList"
 import { AUTHOR } from './constants/main';
 
@@ -33,10 +38,20 @@ function App() {
 
   return (
     <div className="App flex">
-      <div className='flex left column actions'>
-        <input className='margin8' type="text" placeholder="enter text" value={message} onChange={handleInput} />
-        <button className='margin8' onClick={handleButton}>Add to list</button>
+      <Box
+      component="form"
+      sx={{
+        '& > :not(style)': { m: 1 },
+      }}
+    >
+      <div>
+        <TextField className='margin8' id="outlined-basic" label="Enter text" variant="outlined" value={message} onChange={handleInput} />
       </div>
+      <div>
+        <Button className='margin8' variant="outlined" onClick={handleButton}>Add to list</Button>
+      </div>
+    </Box>
+
       <MessageList messages={messageList} />
     </div>
   );
