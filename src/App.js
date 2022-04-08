@@ -40,23 +40,24 @@ const App = () => {
 
   return (
     <div className="App flex">
-      <Container maxWidth="lg">
+      <Container maxWidth="md">
         <Box
             component="form"
             sx={{
               '& > :not(style)': { m: 1 },
               display: 'flex',
-              alignItems: 'center'
+              alignItems: 'center',
+              justifyContent: 'end'
             }}
           >
-          <TextField autoFocus className='margin8' id="outlined-basic" label="Enter text" variant="outlined" value={message} onChange={handleInput} />
+          <TextField autoFocus className='margin8' id="outlined-basic" label="Enter message" variant="outlined" value={message} onChange={handleInput} />
           <IconButton aria-label="send" onClick={handleButton}>
             <SendIcon />
           </IconButton>
         </Box>
       </Container>
 
-      <Container maxWidth="lg">
+      <Container maxWidth="md">
         <MessageList messages={messageList} />
       </Container>
     </div>
