@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-
+import SendIcon from '@mui/icons-material/Send';
+import IconButton from '@mui/material/IconButton';
 import MessageList from "./components/MessageList"
 import { AUTHOR } from './constants/main';
 
@@ -44,21 +44,15 @@ const App = () => {
         <Box
             component="form"
             sx={{
-              '& > :not(style)': { m: 1 }
+              '& > :not(style)': { m: 1 },
+              display: 'flex',
+              alignItems: 'center'
             }}
           >
-          <div>
-            <TextField 
-            sx={{
-              width: 300,
-            }}
-            autoFocus className='margin8' id="outlined-basic" label="Enter text" variant="outlined" value={message} onChange={handleInput} />
-          </div>
-          <div>
-            <Button sx={{
-              width: 150,
-            }} className='margin8' variant="outlined" onClick={handleButton}>Add to list</Button>
-          </div>
+          <TextField autoFocus className='margin8' id="outlined-basic" label="Enter text" variant="outlined" value={message} onChange={handleInput} />
+          <IconButton aria-label="send" onClick={handleButton}>
+            <SendIcon />
+          </IconButton>
         </Box>
       </Container>
 

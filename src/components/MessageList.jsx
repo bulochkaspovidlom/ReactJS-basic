@@ -12,9 +12,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 import Divider from '@mui/material/Divider';
 
-export default function MessageList(props) {
-  const messageLength = props.messages.length;
-  console.log(messageLength);
+export default function MessageList({messages}) {
+  const messageLength = messages.length;
   return (
     <div className="messageList">
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', border: '1px solid #bdbdbd', borderRadius: '5px' }}
@@ -25,7 +24,7 @@ export default function MessageList(props) {
         </ListSubheader>
       }
     >
-      {props.messages.map((el, i) => 
+      {messages.map((el, i) => 
         <div key={i}>
           <ListItem 
             secondaryAction={
