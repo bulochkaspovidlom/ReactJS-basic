@@ -1,17 +1,54 @@
 import React from 'react';
+import List from '@mui/material/List';
+import ListSubheader from '@mui/material/ListSubheader';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
 
-const MessageList = function(props) {
+import IconButton from '@mui/material/IconButton';
+import ImageIcon from '@mui/icons-material/Image';
+import DeleteIcon from '@mui/icons-material/Delete';
+
+import Divider from '@mui/material/Divider';
+
+export default function MessageList({messages}) {
+  const messageLength = messages.length;
   return (
     <div className="messageList">
-      <ul>
-        {props.messages.map((el, i) => 
-          <li className='flex column message' key={i}>
-            <h3>{el.text}</h3>
-            <sup className='author'>{el.author}</sup>
-        </li>
-        )}
-      </ul>
+    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', border: '1px solid #bdbdbd', borderRadius: '5px' }}
+      aria-labelledby="my-chat-dialog"
+      subheader={
+        <ListSubheader sx={{ borderRadius: '5px' }} component="div" id="my-chat-dialog">
+          My chat dialog
+        </ListSubheader>
+      }
+    >
+      {messages.map((el, i) => 
+        <div key={i}>
+          <ListItem 
+            secondaryAction={
+              <IconButton edge="end" aria-label="delete">
+                <DeleteIcon />
+              </IconButton>
+            }
+          >
+            <ListItemAvatar>
+              <Avatar>
+                <ImageIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary={el.text} secondary={el.author} />
+          </ListItem>
+          <Divider key={i} variant="inset" component="li" />
+        </div>
+      )}
+      {messageLength == 0 &&
+          <ListItem>
+            <ListItemText inset primary="No data" />
+          </ListItem>
+        }
+    </List>
     </div>
   )
 }
-export default MessageList;

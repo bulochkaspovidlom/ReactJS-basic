@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from 'react';
+
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Container from '@mui/material/Container';
+import SendIcon from '@mui/icons-material/Send';
+import IconButton from '@mui/material/IconButton';
 import MessageList from "./components/MessageList"
 import { AUTHOR } from './constants/main';
 
-function App() {
+const App = () => {
   const [messageList, setMessageList] = useState([]);
   const [message, setMessage] = useState('');
 
@@ -31,13 +37,29 @@ function App() {
     }
   }, [messageList]);
 
+
   return (
     <div className="App flex">
-      <div className='flex left column actions'>
-        <input className='margin8' type="text" placeholder="enter text" value={message} onChange={handleInput} />
-        <button className='margin8' onClick={handleButton}>Add to list</button>
-      </div>
-      <MessageList messages={messageList} />
+      <Container maxWidth="md">
+        <Box
+            component="form"
+            sx={{
+              '& > :not(style)': { m: 1 },
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'end'
+            }}
+          >
+          <TextField autoFocus className='margin8' id="outlined-basic" label="Enter message" variant="outlined" value={message} onChange={handleInput} />
+          <IconButton aria-label="send" onClick={handleButton}>
+            <SendIcon />
+          </IconButton>
+        </Box>
+      </Container>
+
+      <Container maxWidth="md">
+        <MessageList messages={messageList} />
+      </Container>
     </div>
   );
 }
