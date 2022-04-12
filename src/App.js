@@ -21,7 +21,6 @@ const App = () => {
       setMessage('');
     }
   }
-
   const handleInput = (event) => {
     setMessage(event.target.value);
   }
