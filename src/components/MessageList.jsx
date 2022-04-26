@@ -13,13 +13,14 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import Divider from '@mui/material/Divider';
 
 export default function MessageList({messages}) {
-  const messageLength = messages.length;
+
   return (
     <div className="messageList">
-    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', border: '1px solid #bdbdbd', borderRadius: '5px' }}
+    <List
+      className='list'
       aria-labelledby="my-chat-dialog"
       subheader={
-        <ListSubheader sx={{ borderRadius: '5px' }} component="div" id="my-chat-dialog">
+        <ListSubheader className="list-subheader"  component="div" id="my-chat-dialog">
           My chat dialog
         </ListSubheader>
       }
@@ -43,7 +44,7 @@ export default function MessageList({messages}) {
           <Divider key={i} variant="inset" component="li" />
         </div>
       )}
-      {messageLength == 0 &&
+      {messages.length == 0 &&
           <ListItem>
             <ListItemText inset primary="No data" />
           </ListItem>
